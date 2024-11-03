@@ -1,0 +1,206 @@
+.container {
+    min-height: calc(100vh - 69px);
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .navLink {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navLink:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .main {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #000000;
+  }
+  
+  .submissionsContainer {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 0.5rem;
+  }
+  
+  .submissionDate {
+    font-size: 0.875rem;
+    color: #666666;
+    margin-bottom: 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0.5rem;
+  }
+  
+  .reviewText {
+    margin-bottom: 1rem;
+  }
+  
+  .screenshots {
+    margin-bottom: 1rem;
+    
+  }
+  
+  .screenshotGrid {
+    display: grid;
+    gap: 0.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .screenshotWrapper {
+    position: relative;
+    aspect-ratio: 3 / 2;
+  }
+  
+  .screenshot {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border-radius: 10px;
+  }
+
+  .screenshott{
+    object-fit: fill;
+    border-radius: 4px;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+
+  .icon {
+    object-fit: fill;
+    border-radius: 4px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .validateButton {
+    background-color: #FF9B04;
+    color: #ffffff;
+  }
+  
+  .validateButton:hover {
+    background-color: #FF9B04;
+  }
+  
+  .rejectButton {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+  
+  .rejectButton:hover {
+    background-color: #f5f5f5;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    .nav {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .navLink {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .submissionsContainer {
+      grid-template-columns: 1fr;
+    }
+  
+    .actions {
+      flex-direction: column;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  }
+  .titlecontainer{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .testerLink{
+    color: blue;
+    text-decoration:underline;
+  }

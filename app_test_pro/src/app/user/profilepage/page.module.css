@@ -1,0 +1,267 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #fafafa;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #eaeaea;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebarTitle {
+  font-size: 1.2rem;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.sidebarMenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarMenuItem {
+  margin-bottom: 10px;
+}
+
+.sidebarButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #666;
+}
+
+.sidebarButton:hover {
+  background-color: #f0f0f0;
+}
+
+.logoutButton {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logoutButton:hover {
+  background-color: #333;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.profile {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profileInfo {
+  flex-grow: 1;
+}
+
+.profileName {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+.profileNameInput {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.profileRole {
+  color: #666;
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.profileJoinDate {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.statsSection {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.statCard {
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  flex-basis: 23%;
+  border: 1px solid #eaeaea;
+}
+
+.statTitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+.activityList, .appList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.activityItem, .appItem {
+  background-color: #fafafa;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+}
+
+.badgeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  background-color: #000;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.appName {
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.appDate, .appStatus, .appRating, .appTesters, .appBugs, .appReward {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.starRating {
+  display: inline-flex;
+  margin-left: 5px;
+}
+
+.star {
+  color: #eaeaea;
+}
+
+.starFilled {
+  color: #FF9B04;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    order: 2;
+  }
+
+  .content {
+    order: 1;
+    padding: 20px;
+  }
+
+  .statsSection {
+    flex-wrap: wrap;
+  }
+
+  .statCard {
+    flex-basis: 48%;
+    margin-bottom: 15px;
+  }
+}
+
+.nameContainer{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.editButton{
+  cursor: pointer;
+}
+
+.profileNameInput,
+.profileRoleInput {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 5px;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  outline: none;
+  width: fit-content;
+}
+
+.profileNameInput:focus,
+.profileRoleInput:focus {
+  border-color: #000;
+}
+
+.editButton {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.editButton:hover {
+  opacity: 0.7;
+}

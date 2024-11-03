@@ -1,0 +1,150 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff; /* White background */
+  border-bottom: 1px solid #FF9B04; /* Accent border */
+}
+
+.logoContainer {
+  flex: 1;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000; /* Black text for logo */
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  flex: 2;
+  justify-content: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #000000; /* Black text */
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navLink:hover {
+  background-color: #FF9B04; /* Accent color on hover */
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.notificationIcon,
+.coinBalance,
+.avatar {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.coinBalance {
+  background-color: #FF9B04; /* Accent background for coin balance */
+  color: #ffffff; /* White text */
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.coinBalance span {
+  margin-left: 0.25rem;
+}
+
+.avatar img {
+  border-radius: 50%;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff; /* White background for dropdown */
+  color: #000000; /* Black text */
+  border: 1px solid #FF9B04; /* Accent border */
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdownItem {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdownItem:hover {
+  background-color: #FF9B04; /* Accent color on hover */
+}
+
+.notificationIcon,
+.avatar {
+  position: relative;
+  color: #000000; /* Black icon color */
+}
+
+.mobileMenuButton {
+  display: none;
+  color: #FF9B04; /* Accent color for mobile menu button */
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .logoContainer {
+    flex: 1;
+  }
+
+  .mobileMenuButton {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .nav {
+    flex-basis: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .mobileNavOpen {
+    display: flex;
+  }
+
+  .navLink {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  .userInfo {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .dropdown {
+    width: 200px;
+    right: -75px;
+  }
+}

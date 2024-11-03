@@ -1,0 +1,64 @@
+.howItWorks {
+    padding: 4rem 1rem;
+    background-color: #FFF5E6;
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .stepGrid {
+    display: grid;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .stepCard {
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .stepNumber {
+    background-color: #FF9B04;
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+  }
+  
+  .stepTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FF9B04;
+    margin-bottom: 1rem;
+  }
+  
+  .stepDescription {
+    color: #000000;
+  }
+  
+  @media (min-width: 768px) {
+    .stepGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .stepGrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }

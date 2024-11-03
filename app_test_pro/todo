@@ -1,0 +1,401 @@
+1. Authentication:
+
+
+a. POST /api/auth/signup
+Purpose: Register a new user
+Body:
+
+{
+  "email": "string",
+  "password": "string",
+  "name": "string",
+}
+
+Response:
+
+- 201 Created: User created successfully
+- 400 Bad Request: Invalid input
+- 409 Conflict: Email already exists
+
+
+b. POST /api/auth/login
+Purpose: Authenticate a user and receive a token
+Body:
+
+{
+  "email": "string",
+  "password": "string"
+}
+
+Response:
+
+- 200 OK:
+{
+  "token": "string",
+  "user": {
+    "id": "string",
+    "name": "string",
+    "email": "string",
+    "role": "developer" | "tester" | "notyet"
+  }
+}
+
+- 401 Unauthorized: Invalid credentials
+
+
+c. POST /api/auth/logout
+Purpose: Invalidate the current user's token
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: Logged out successfully
+- 401 Unauthorized: Invalid token
+
+
+d. GET /api/auth/user
+Purpose: Get the current authenticated user's information
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK:
+{
+  "id": "string",
+  "name": "string",
+  "email": "string",
+  "role": "developer" | "tester",
+  "rating",
+  "appstotest" : []
+  "myapps": []
+}
+
+- 401 Unauthorized: Invalid token
+
+
+2. User Management:
+
+
+a. GET /api/users/:id
+Purpose: Get a user's profile
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK:
+
+{
+  "id": "string",
+  "name": "string",
+  "email": "string",
+  "role": "developer" | "tester",
+  "createdAt": "string (ISO date)"
+  "appstotest" : []
+  "myapps": []
+}
+
+- 404 Not Found: User not found
+
+
+b. patch /api/users/:id
+Purpose: Update a user's profile
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Body:
+
+{
+  "name": "string",
+  "email": "string",
+  "role": "developer" | "tester",
+}
+
+Response:
+
+- 200 OK: Updated user object
+- 400 Bad Request: Invalid input
+- 404 Not Found: User not found
+
+
+a. POST /api/apps
+Purpose: Create a new app for testing
+Headers: Authorization: Bearer token
+Body:
+
+[{
+  "name": "string",
+  "description": "string",
+  "instructions": "string",
+  "reward": number,
+  "icon": 'string',
+  "screenshots": ["5"]
+}]
+Response:
+
+- 201 Created: Created app object
+- 400 Bad Request: Invalid input
+
+
+b. GET /api/apps
+Purpose: Get all apps
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- page (number, default: 1)
+- limit (number, default: 10)
+- status ("active" | "completed")
+Response:
+- 200 OK: Array of app objects with pagination info
+
+
+c. GET /api/apps/:id
+Purpose: Get details of a specific app
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: App object
+- 404 Not Found: App not found
+
+
+d. PUT /api/apps/:id
+Purpose: Update an app's details
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Body:
+
+{
+    "name": "string",
+    "description": "string",
+    "instructions": "string",
+    "reward": number,
+    icon: 'string',
+    "screenshots": []
+}
+
+Response:
+
+- 200 OK: Updated app object
+- 400 Bad Request: Invalid input
+- 404 Not Found: App not found
+
+
+e. DELETE /api/apps/:id
+Purpose: Delete an app
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Response:
+
+- 204 No Content: App deleted successfully
+- 404 Not Found: App not found
+
+
+4. Testing Assignments:
+
+
+a. GET /api/assignments
+Purpose: Get all assignments for a tester
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- page (number, default: 1)
+- limit (number, default: 10)
+- status ("active" | "completed")
+Response:
+- 200 OK: Array of assignment objects with pagination info
+
+
+b. GET /api/assignments/:id
+Purpose: Get details of a specific assignment
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: Assignment object
+- 404 Not Found: Assignment not found
+
+
+c. POST /api/assignments/:id/submit
+Purpose: Submit a review for an assignment
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Body:
+
+{
+  "review": "string",
+  "screenshots": ["string (URL)"]
+}
+
+Response:
+
+- 201 Created: Submission object
+- 400 Bad Request: Invalid input
+- 404 Not Found: Assignment not found
+
+
+d. GET /api/assignments/:id/submissions
+Purpose: Get all submissions for an assignment
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- page (number, default: 1)
+- limit (number, default: 10)
+Response:
+- 200 OK: Array of submission objects with pagination info
+- 404 Not Found: Assignment not found
+
+
+5. Review Process (for Developers):
+
+
+a. GET /api/submissions
+Purpose: Get all submissions for a developer's apps
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- page (number, default: 1)
+- limit (number, default: 10)
+- status ("pending" | "validated" | "rejected")
+Response:
+- 200 OK: Array of submission objects with pagination info
+
+
+b. GET /api/submissions/:id
+Purpose: Get details of a specific submission
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: Submission object
+- 404 Not Found: Submission not found
+
+
+c. PUT /api/submissions/:id/validate
+Purpose: Validate a submission
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: Updated submission object
+- 404 Not Found: Submission not found
+
+
+d. PUT /api/submissions/:id/reject
+Purpose: Reject a submission
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Body:
+
+{
+  "reason": "string"
+}
+
+Response:
+
+- 200 OK: Updated submission object
+- 400 Bad Request: Invalid input
+- 404 Not Found: Submission not found
+
+
+/* 6. Payout System:
+
+
+a. POST /api/payouts/request
+Purpose: Request a payout
+Headers: Authorization: Bearer token
+Body:
+
+```json
+{
+  "amount": number
+}
+```
+
+Response:
+
+- 201 Created: Payout request object
+- 400 Bad Request: Invalid input or insufficient balance
+
+
+b. GET /api/payouts/history
+Purpose: Get payout history for a user
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- page (number, default: 1)
+- limit (number, default: 10)
+Response:
+- 200 OK: Array of payout objects with pagination info */
+
+
+7. Notification System:
+
+
+a. GET /api/notifications
+Purpose: Get all notifications for a user
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- page (number, default: 1)
+- limit (number, default: 10)
+Response:
+- 200 OK: Array of notification objects with pagination info
+
+
+b. PUT /api/notifications/:id/read
+Purpose: Mark a notification as read
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: Updated notification object
+- 404 Not Found: Notification not found
+
+
+9. Analytics:
+
+
+a. GET /api/analytics/apps/:id
+Purpose: Get analytics for a specific app
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- startDate (string, ISO date)
+- endDate (string, ISO date)
+Response:
+- 200 OK: Analytics object for the app
+- 404 Not Found: App not found
+
+
+b. GET /api/analytics/tester/:id
+Purpose: Get analytics for a specific tester
+Parameters: id (string)
+Headers: Authorization: Bearer token
+Query Parameters:
+
+- startDate (string, ISO date)
+- endDate (string, ISO date)
+Response:
+- 200 OK: Analytics object for the tester
+- 404 Not Found: Tester not found
+
+
+10. Categories and Tags:
+
+
+a. GET /api/categories
+Purpose: Get all app categories
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: Array of category objects
+
+
+b. GET /api/tags
+Purpose: Get all app tags
+Headers: Authorization: Bearer token
+Response:
+
+- 200 OK: Array of tag objects
+
+
+These endpoints provide a comprehensive API for the AppTestPro platform, covering all the main functionalities we've discussed. Remember to implement proper error handling, input validation, and authentication checks on the server-side for each of these endpoints.
